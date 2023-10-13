@@ -1,0 +1,49 @@
+package packA;
+
+import java.util.Random;
+
+public class Accountant extends Programmer{
+    private static String companyName = "berk barn jamkad";
+    private int experience;
+    private String specialty;
+    public Accountant(String n,int exp,int sal){
+        super(n,exp,sal);
+    }
+    public Accountant(String name,int experience,int superExp,int sal ,String talent){
+        super(name,experience,sal);
+        this.experience = superExp;
+        this.specialty = talent;
+    }
+    //Specialty
+    public void setSpecialty(String newSpecialty){
+        this.specialty = newSpecialty;
+    }
+    public String getSpecialty(){
+        return specialty;
+    }
+    //AccountExperience
+    public void setAccountExperience(int experience){
+        this.experience = experience;
+    }
+    public int getAccountExperience(){
+        return experience;
+    }
+    public String tellProfit(){
+        Random random = new Random();
+        int ran = random.nextInt(1000);
+        return String.format("%s's profit is %d. My salary is %d",companyName,ran,salary);
+    }
+    @Override
+    public String toString(){
+        return String.format("%s %d %d can %s",super.getName(),super.getExperience(),experience,specialty);
+    }
+    @Override
+    public void sayHi(){
+        Random random = new Random();
+        int ran = random.nextInt(1000);
+        System.out.printf("%s's profit is %d. My salary is %d\n",companyName,ran,super.getSalary());
+    }
+    public static String tellMyRole(){
+        return String.format("I am an accountant at "+companyName);
+    }
+}
